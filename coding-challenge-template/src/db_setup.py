@@ -5,7 +5,7 @@ db.create_all()
 
 admin = User(username='admin')
 guest = User(username='guest')
-admin_address = Address(full_address='419 Summit Ave, Arlington',
+admin_address = Address(full_address='419 Summit Ave, Arlington, TX 76013',
                         user=admin)
 guest_address = Address(
     full_address='1 Telegraph Hill Blvd, San Francisco, CA 94133',
