@@ -127,7 +127,7 @@ def fb_webhook():
                 print value
             except:
                 pass
-            if resp in greetings:
+            if str(message['text']) in greetings:
                 entity ="greetings"
                 message_text = random.choice(greetings)
             elif entity == "emotion":
