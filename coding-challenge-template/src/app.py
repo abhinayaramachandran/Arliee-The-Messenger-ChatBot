@@ -127,10 +127,14 @@ def fb_webhook():
             except:
                 pass
             print "Entity is "+str(entity)+ "value is"+str(value)
+            if entity == "wit/greetings":
+                message_text = resp['entities'][entity][1]['value']
             if entity == "emotion":
                 message_text =  "Oh why do you feel {}".format(str(value))+ " don't worry , Arlie knows you are awesome"
             elif entity =="motivation":
                  message_text = "Your good friend Arlie is here to "+ str(value)+ " you"
+            elif entity== "red":
+                message_text = "Oh dear, listen to me. Call 1-800-273-8255 immediately. This is not the end dear."
             else:
                  message_text = "Hmm , I don't understand that, but always remember that you are awesome."
 
