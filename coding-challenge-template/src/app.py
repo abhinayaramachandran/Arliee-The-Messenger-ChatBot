@@ -85,7 +85,10 @@ def fb_webhook():
     f = "How about reading something good ? Try https://zenhabits.net/"
     g= "You are a fighter."
     h ="Maybe netflix can help. It works all the time for me."
-    notthat = [e,f,g,h]
+    i ="Listen to me, read this  https://www.enkiverywell.com/happy-thoughts.html"
+    j = "Watch this. It will help you. https://www.youtube.com/watch?v=zCyB2DQFdA0"
+    k = "Something I like. You might too, https://www.youtube.com/watch?v=GdmMkpm2MU8 "
+    notthat = [e,f,g,h, i, j, k]
     """This handler deals with incoming Facebook Messages.
 
     In this example implementation, we handle the initial handshake mechanism,
