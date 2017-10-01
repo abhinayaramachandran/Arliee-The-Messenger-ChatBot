@@ -76,7 +76,11 @@ def index():
 @app.route('/fb_webhook', methods=['GET', 'POST'])
 def fb_webhook():
     greetings = ['hai', 'hello', 'howdy', 'wassup', 'hallo', 'hiii','hey','hi']
-    quotes = ['a','b','c','d']
+    a = "Never underestimate the power of hard work"
+    b = "Focus and Hardwork can get you places"
+    c = "Winners don't make excuses. You are one of them"
+    d = "Believe in yourself. You can do it"
+    quotes = [a,b,c,d]
     """This handler deals with incoming Facebook Messages.
 
     In this example implementation, we handle the initial handshake mechanism,
@@ -133,7 +137,7 @@ def fb_webhook():
             elif entity == "emotion":
                 message_text =  "Oh why do you feel {}".format(str(value))+ " don't worry , Arlie knows you are awesome"
             elif entity =="motivation" or entity =="quotes":
-                 message_text = "Your good friend Arlie is here to  motivate you" + random.choice(quotes)
+                 message_text = "Your good friend Arlie is here to  motivate you" 
             elif entity== "red":
                 message_text = "Oh dear, listen to me. Call 1-800-273-8255 immediately. This is not the end dear."
             elif entity=="bye" and  entity =="thanks":
