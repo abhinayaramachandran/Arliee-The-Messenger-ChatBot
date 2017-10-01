@@ -127,7 +127,7 @@ def fb_webhook():
             except:
                 pass
             print "Entity is "+str(entity)+ "value is"+str(value)
-            if entity == "wit/greetings":
+            if entity == "greetings":
                 message_text = resp['entities'][entity][1]['value']
             if entity == "emotion":
                 message_text =  "Oh why do you feel {}".format(str(value))+ " don't worry , Arlie knows you are awesome"
