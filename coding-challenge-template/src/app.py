@@ -116,7 +116,7 @@ def fb_webhook():
                 continue
             sender_id = event['sender']['id']
             client = Wit("HFCPSWOKZXNXJ6W4M7LIP7RHAHWBN63Q")
-            resp = client.message('I need encouragement')
+            resp = client.message(str(message['text']))
             entity = None
             value = None
             try:
