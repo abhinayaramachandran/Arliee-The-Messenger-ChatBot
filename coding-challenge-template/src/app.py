@@ -85,7 +85,7 @@ def fb_webhook():
     f = "How about reading something good ? Try https://zenhabits.net/"
     g= "You are a fighter."
     h ="Maybe netflix can help. It works all the time for me."
-    nothat = [e,f,g,h]
+    notthat = [e,f,g,h]
     """This handler deals with incoming Facebook Messages.
 
     In this example implementation, we handle the initial handshake mechanism,
@@ -141,8 +141,10 @@ def fb_webhook():
                 message_text = random.choice(greetings)
             elif entity == "emotion":
                 message_text =  "Oh why do you feel {}".format(str(value))+ " don't worry. This too shall pass. Arlie knows you are awesome"
-            elif entity =="motivation" or entity =="quotes":
+            elif entity =="motivation" :
                  message_text = "Your good friend Arlie is here to  motivate you" +"\n"+ random.choice(quotes)
+            elif entity == "quotes":
+                message_text = random.choice(quotes)
             elif entity== "red":
                 message_text = "Oh dear, listen to me. Call 1-800-273-8255 immediately. This is not the end dear."
             elif entity=="bye" or  entity =="thanks":
