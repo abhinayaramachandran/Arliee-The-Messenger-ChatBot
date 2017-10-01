@@ -128,8 +128,8 @@ def fb_webhook():
             except:
                 pass
             if str(message['text']) in greetings:
-                entity ="greetings"
                 message_text = random.choice(greetings)
+                print "wee"+message_text
             elif entity == "emotion":
                 message_text =  "Oh why do you feel {}".format(str(value))+ " don't worry , Arlie knows you are awesome"
             elif entity =="motivation":
