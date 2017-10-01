@@ -69,16 +69,6 @@ def index():
     # User.query and User.query.all() are both possible options to iterate over
     # query results.
     client = Wit("HFCPSWOKZXNXJ6W4M7LIP7RHAHWBN63Q")
-    resp = client.message('hi')
-    entity = None
-    value = None
-    try:
-                entity = list(resp['entities'])[0]
-                print entity
-                value = resp['entities'][entity][0]['value']
-                print value
-    except:
-                pass
     
     return flask.render_template('index.html', users=User.query.all())
 
@@ -138,7 +128,6 @@ def fb_webhook():
                 pass
             print "Entity is "+str(entity)+ "value is"+str(value)
             if entity == "greetings":
-                print entity
                 message_text = resp['entities'][entity][1]['value']
             if entity == "emotion":
                 message_text =  "Oh why do you feel {}".format(str(value))+ " don't worry , Arlie knows you are awesome"
