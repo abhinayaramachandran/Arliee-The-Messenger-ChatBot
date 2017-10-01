@@ -8,7 +8,7 @@ This file creates your application.
 """
 
 import os
-
+import random
 import flask
 import requests
 from flask_sqlalchemy import SQLAlchemy
@@ -75,6 +75,7 @@ def index():
 
 @app.route('/fb_webhook', methods=['GET', 'POST'])
 def fb_webhook():
+    greetings = ['Hai', 'Hello', 'Howdy', 'Wassup', 'Hallo', 'Hiii','Hey']
     """This handler deals with incoming Facebook Messages.
 
     In this example implementation, we handle the initial handshake mechanism,
@@ -117,6 +118,9 @@ def fb_webhook():
             sender_id = event['sender']['id']
             client = Wit("HFCPSWOKZXNXJ6W4M7LIP7RHAHWBN63Q")
             resp = client.message(str(message['text']))
+            if resp in greetings:
+                entity ="greetings"
+                value = random.choice(greetings)
             entity = None
             value = None
             try:
@@ -126,7 +130,6 @@ def fb_webhook():
                 print value
             except:
                 pass
-            print "Entity is "+str(entity)+ "value is"+str(value)
             if entity == "greetings":
                 message_text = resp['entities'][entity][0]['value']
             if entity == "emotion":
