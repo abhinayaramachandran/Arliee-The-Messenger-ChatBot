@@ -118,9 +118,6 @@ def fb_webhook():
             sender_id = event['sender']['id']
             client = Wit("HFCPSWOKZXNXJ6W4M7LIP7RHAHWBN63Q")
             resp = client.message(str(message['text']))
-            if resp in greetings:
-                entity ="greetings"
-                value = random.choice(greetings)
             entity = None
             value = None
             try:
@@ -130,9 +127,10 @@ def fb_webhook():
                 print value
             except:
                 pass
-            if entity == "greetings":
-                message_text = resp['entities'][entity][0]['value']
-            if entity == "emotion":
+            if resp in greetings:
+                entity ="greetings"
+                message_text = random.choice(greetings)
+            elif entity == "emotion":
                 message_text =  "Oh why do you feel {}".format(str(value))+ " don't worry , Arlie knows you are awesome"
             elif entity =="motivation":
                  message_text = "Your good friend Arlie is here to "+ str(value)+ " you"
