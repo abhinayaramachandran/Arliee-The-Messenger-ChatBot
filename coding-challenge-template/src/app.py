@@ -12,6 +12,7 @@ import os
 import flask
 import requests
 from flask_sqlalchemy import SQLAlchemy
+from wit import Wit
 
 FACEBOOK_API_MESSAGE_SEND_URL = (
     'https://graph.facebook.com/v2.6/me/messages?access_token=%s')
@@ -67,6 +68,8 @@ def index():
     # iterator. This isn't strictly necessary, but just to illustrate that both
     # User.query and User.query.all() are both possible options to iterate over
     # query results.
+    client = Wit("HFCPSWOKZXNXJ6W4M7LIP7RHAHWBN63Q")
+    
     return flask.render_template('index.html', users=User.query.all())
 
 
@@ -79,6 +82,7 @@ def fb_webhook():
     level AI, but we had to keep it short...
 
     """
+
     # Handle the initial handshake request.
     if flask.request.method == 'GET':
         if (flask.request.args.get('hub.mode') == 'subscribe' and
@@ -93,6 +97,7 @@ def fb_webhook():
     # Get the request body as a dict, parsed from JSON.
     payload = flask.request.json
 
+   
     # TODO: Validate app ID and other parts of the payload to make sure we're
     # not accidentally processing data that wasn't intended for us.
 
@@ -110,7 +115,25 @@ def fb_webhook():
             if 'text' not in message:
                 continue
             sender_id = event['sender']['id']
-            message_text = message['text'] +"Abh"
+            client = Wit("HFCPSWOKZXNXJ6W4M7LIP7RHAHWBN63Q")
+            resp = client.message('I need encouragement')
+            entity = None
+            value = None
+            try:
+                entity = list(resp['entities'])[0]
+                print entity
+                value = resp['entities'][entity][0]['value']
+                print value
+            except:
+                pass
+            print "Entity is "+str(entity)+ "value is"+str(value)
+            if entity == "emotion":
+                message_text =  "Oh why do you feel {}".format(str(value))+ " don't worry , Arlie knows you are awesome"
+            elif entity =="motivation":
+                 message_text = "Your good friend Arlie is here to "+ str(value)+ " you"
+            else:
+                 message_text = "Hmm , I don't understand that, but always remember that you are awesome."
+
             request_url = FACEBOOK_API_MESSAGE_SEND_URL % (
                 app.config['FACEBOOK_PAGE_ACCESS_TOKEN'])
             requests.post(request_url,
