@@ -140,7 +140,7 @@ def fb_webhook():
                  message_text = "Your good friend Arlie is here to  motivate you" +"\n"+ random.choice(quotes)
             elif entity== "red":
                 message_text = "Oh dear, listen to me. Call 1-800-273-8255 immediately. This is not the end dear."
-            elif entity=="bye" and  entity =="thanks":
+            elif entity=="bye" or  entity =="thanks":
                 message_text ="Anytime!"
             else:
                  message_text = "Hmm , I don't understand that, but always remember that you are awesome."
