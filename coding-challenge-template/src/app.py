@@ -75,7 +75,7 @@ def index():
 
 @app.route('/fb_webhook', methods=['GET', 'POST'])
 def fb_webhook():
-    greetings = ['Hai', 'Hello', 'Howdy', 'Wassup', 'Hallo', 'Hiii','Hey']
+    greetings = ['hai', 'hello', 'howdy', 'wassup', 'hallo', 'hiii','hey','hi']
     """This handler deals with incoming Facebook Messages.
 
     In this example implementation, we handle the initial handshake mechanism,
