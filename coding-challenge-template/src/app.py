@@ -76,11 +76,7 @@ def index():
 @app.route('/fb_webhook', methods=['GET', 'POST'])
 def fb_webhook():
     greetings = ['hai', 'hello', 'howdy', 'wassup', 'hallo', 'hiii','hey','hi']
-    quotes = [' Champions keep playing until they get it right. -Billie Jean King', 
-    'Keep your face always toward the sunshine—and shadows will fall behind you. —Walt Whitman',
-    'It is always the simple that produces the marvelous. —Amelia Barr',
-    'All you need is the plan, the road map, and the courage to press on to your destination. —Earl Nightingale',
-    'I arise full of eagerness and energy, knowing well what achievement lies ahead of me. —Zane Grey']
+    quotes = ['a','b','c','d']
     """This handler deals with incoming Facebook Messages.
 
     In this example implementation, we handle the initial handshake mechanism,
